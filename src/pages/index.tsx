@@ -5,8 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Image from "next/image"; // Next.js Image component
-import "../styles/Login.css"; // Estilos específicos para a tela de login
+import Image from "next/image";
+import styles from "../app/styles/Login.module.css"; // Importação do CSS Module
 
 // Definindo a interface para os dados do formulário
 interface LoginFormInputs {
@@ -50,51 +50,76 @@ function Login() {
 	};
 
 	return (
-		<div className="login-page">
-			<div className="banner">
-				<Image
-					src="/images/banner-image.svg"
-					alt="Banner"
-					width={300}
-					height={500}
-				/>
-				<div className="banner-content">
-					<h2>AGENDAMENTO</h2>
-					<h2>CONTROLE</h2>
-					<h2>COMUNICAÇÃO</h2>
-					<h2>RECEITAS</h2>
-					<h2>PARECERES</h2>
-				</div>
+		<div className={styles.loginPage}>
+			{/* Seção da esquerda com o conteúdo do banner */}
+			<div className={styles.bannerContent}>
+				<h2>AGENDAMENTO</h2>
+				<h2>CONTROLE</h2>
+				<h2>COMUNICAÇÃO</h2>
+				<h2>RECEITAS</h2>
+				<h2>PARECERES</h2>
 			</div>
-			<div className="login-form">
-				<div className="logo">
+
+			{/* Seção da direita com o formulário de login */}
+			<div className={styles.loginForm}>
+				{/* Logo do Clin Plus */}
+				<div className={styles.logo}>
 					<Image
-						src="/images/clin-plus-logo.svg"
+						src="/images/logo.svg"
 						alt="Clin Plus Logo"
 						width={150}
 						height={50}
 					/>
 				</div>
+
+				{/* Formulário de login */}
 				<form onSubmit={handleSubmit(onSubmit)}>
+					{/* Campo de email */}
 					<input
 						type="email"
 						placeholder="Nome do usuário ou e-mail"
 						{...register("email")}
+						className={styles.inputField} // Classe de estilo aplicada ao campo de email
 					/>
-					<p>{errors.email?.message}</p>
+					<p className={styles.errorMessage}>{errors.email?.message}</p>{" "}
+					{/* Exibe erro de validação */}
+					{/* Campo de senha */}
 					<input
 						type="password"
 						placeholder="Senha"
 						{...register("password")}
+						className={styles.inputField} // Classe de estilo aplicada ao campo de senha
 					/>
-					<p>{errors.password?.message}</p>
-					<button type="submit">Entrar</button>
-					<div className="social-login">
+					<p className={styles.errorMessage}>{errors.password?.message}</p>{" "}
+					{/* Exibe erro de validação */}
+					{/* Botão de submissão */}
+					<button type="submit" className={styles.submitButton}>
+						Entrar
+					</button>
+					{/* Login social */}
+					<div className={styles.socialLogin}>
 						<p>OU</p>
-						<button className="google-login">Entrar com Google</button>
+						<button
+							className={styles.googleLogin}
+							type="button"
+							onClick={() =>
+								(window.location.href = "http://localhost:3000/auth/google")
+							}
+						>
+							Entrar com Google
+						</button>
 					</div>
+					{/* Links de cadastro e recuperação de senha */}
 					<p>
-						Não tem uma conta? <a href="/register">Cadastre-se</a>
+						Não tem uma conta?{" "}
+						<a href="/register" className={styles.link}>
+							Cadastre-se
+						</a>
+					</p>
+					<p>
+						<a href="/forgot-password" className={styles.link}>
+							Esqueceu a senha?
+						</a>
 					</p>
 				</form>
 			</div>

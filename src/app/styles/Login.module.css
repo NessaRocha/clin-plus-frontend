@@ -1,0 +1,75 @@
+.loginPage {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 100vh;
+	padding: 0 50px;
+}
+
+.bannerContent {
+	text-align: left;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.loginForm {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	width: 300px;
+}
+
+.logo {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.inputField {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.errorMessage {
+	color: red;
+	font-size: 12px;
+}
+
+.submitButton {
+	width: 100%;
+	padding: 10px;
+	background-color: #0070f3;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.submitButton:hover {
+	opacity: 0.8;
+}
+
+.socialLogin {
+	text-align: center;
+	margin: 20px 0;
+}
+
+.googleLogin {
+	background-color: #db4437;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 4px;
+}
+
+.link {
+	color: #0070f3;
+	text-decoration: none;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
